@@ -1,0 +1,65 @@
+{
+  "title": "System Performance Overview",
+  "description": "Sample Datadog dashboard for testing translation - monitors CPU, memory, and HTTP metrics",
+  "widgets": [
+    {
+      "id": 1,
+      "definition": {
+        "title": "CPU Usage by Host",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "avg:system.cpu.user{*} by {host}",
+            "display_type": "line"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "definition": {
+        "title": "Memory Usage Percentage",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "avg:system.mem.used{*} / avg:system.mem.total{*} * 100",
+            "display_type": "area"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "definition": {
+        "title": "HTTP Request Rate",
+        "type": "timeseries",
+        "requests": [
+          {
+            "q": "sum:http.requests{*}.as_rate() by {service}",
+            "display_type": "line"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "definition": {
+        "title": "Current Error Rate",
+        "type": "query_value",
+        "requests": [
+          {
+            "q": "avg:http.errors{*}",
+            "aggregator": "last"
+          }
+        ]
+      }
+    }
+  ],
+  "template_variables": [
+    {
+      "name": "host",
+      "prefix": "host",
+      "default": "*"
+    }
+  ]
+}
