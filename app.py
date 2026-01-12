@@ -1,6 +1,4 @@
 """
-Migration Architect - Streamlit UI
-
 This is just the presentation layer. All the agent logic is in agent.py.
 """
 
@@ -14,12 +12,12 @@ from agent import create_agent
 # ============================================================================
 
 st.set_page_config(
-    page_title="Migration Architect", 
+    page_title="Ollie Agent Demo", 
     page_icon="🏗️", 
     layout="wide"
 )
 
-st.title("🏗️ Migration Architect: Automated Engineer")
+st.title("🏗️ Ollie Agent")
 st.markdown("### Watch an AI agent compile and test its own monitoring code")
 
 # ============================================================================
